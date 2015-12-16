@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CitySelectedController">
+            <connections>
+                <outlet property="cover" destination="WJT-8N-0mk" id="pHO-4C-VH8"/>
+                <outlet property="serchBar" destination="xI2-Z8-08H" id="7aF-c7-LYQ"/>
+                <outlet property="topConstraint" destination="r6w-Oc-Gqs" id="ax3-AT-iFq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="控制器的view">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yts-dJ-kp4" userLabel="导航栏">
+                    <rect key="frame" x="0.0" y="20" width="320" height="62"/>
+                    <subviews>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_navigationBar_normal" translatesAutoresizingMaskIntoConstraints="NO" id="mrZ-Zt-oah">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er4-DV-qMs">
+                            <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="62" id="hD0-4o-D83"/>
+                            </constraints>
+                            <state key="normal" image="btn_navigation_close">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="btn_navigation_close_hl"/>
+                            <connections>
+                                <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="Wwm-Zh-4fb"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="切换城市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHo-Kd-6E5">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="oHo-Kd-6E5" secondAttribute="trailing" id="1Qs-04-6Ft"/>
+                        <constraint firstAttribute="bottom" secondItem="er4-DV-qMs" secondAttribute="bottom" id="DbA-wO-q2d"/>
+                        <constraint firstItem="er4-DV-qMs" firstAttribute="leading" secondItem="Yts-dJ-kp4" secondAttribute="leading" id="HKC-GT-Fyg"/>
+                        <constraint firstAttribute="bottom" secondItem="mrZ-Zt-oah" secondAttribute="bottom" id="Kqa-CF-kux"/>
+                        <constraint firstItem="mrZ-Zt-oah" firstAttribute="top" secondItem="Yts-dJ-kp4" secondAttribute="top" id="MBG-SM-rmd"/>
+                        <constraint firstItem="oHo-Kd-6E5" firstAttribute="top" secondItem="Yts-dJ-kp4" secondAttribute="top" id="U3B-N4-HGP"/>
+                        <constraint firstAttribute="trailing" secondItem="mrZ-Zt-oah" secondAttribute="trailing" id="VUE-DI-L9l"/>
+                        <constraint firstItem="mrZ-Zt-oah" firstAttribute="leading" secondItem="Yts-dJ-kp4" secondAttribute="leading" id="Vtx-3P-23s"/>
+                        <constraint firstItem="oHo-Kd-6E5" firstAttribute="leading" secondItem="Yts-dJ-kp4" secondAttribute="leading" id="blL-CR-bDU"/>
+                        <constraint firstAttribute="bottom" secondItem="oHo-Kd-6E5" secondAttribute="bottom" id="c2c-MD-7dE"/>
+                        <constraint firstAttribute="height" constant="62" id="fLV-Vp-XfM"/>
+                        <constraint firstItem="er4-DV-qMs" firstAttribute="top" secondItem="Yts-dJ-kp4" secondAttribute="top" id="p5g-uz-3Xj"/>
+                    </constraints>
+                </view>
+                <searchBar contentMode="redraw" backgroundImage="bg_login_textfield" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-Z8-08H">
+                    <rect key="frame" x="0.0" y="92" width="320" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="r7f-uz-czn"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="m3P-Ng-heL"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="N4S-Tt-gZf">
+                    <rect key="frame" x="0.0" y="142" width="320" height="338"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="R46-rJ-sav"/>
+                        <outlet property="delegate" destination="-1" id="k2x-OG-kDp"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJT-8N-0mk">
+                    <rect key="frame" x="0.0" y="142" width="320" height="338"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yts-dJ-kp4" secondAttribute="trailing" id="1JY-BG-0xi"/>
+                <constraint firstItem="xI2-Z8-08H" firstAttribute="top" secondItem="Yts-dJ-kp4" secondAttribute="bottom" constant="10" id="2X7-PG-Wh5"/>
+                <constraint firstItem="Yts-dJ-kp4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="30K-9V-Muh"/>
+                <constraint firstAttribute="bottom" secondItem="WJT-8N-0mk" secondAttribute="bottom" id="BFM-0j-drC"/>
+                <constraint firstAttribute="trailing" secondItem="WJT-8N-0mk" secondAttribute="trailing" id="BaW-9q-k68"/>
+                <constraint firstAttribute="bottom" secondItem="N4S-Tt-gZf" secondAttribute="bottom" id="DGH-Ix-4TE"/>
+                <constraint firstItem="WJT-8N-0mk" firstAttribute="top" secondItem="xI2-Z8-08H" secondAttribute="bottom" constant="10" id="Ggp-sh-DvT"/>
+                <constraint firstItem="N4S-Tt-gZf" firstAttribute="top" secondItem="xI2-Z8-08H" secondAttribute="bottom" constant="10" id="LFj-qD-4ze"/>
+                <constraint firstAttribute="trailing" secondItem="xI2-Z8-08H" secondAttribute="trailing" id="NC8-gw-zZl"/>
+                <constraint firstItem="N4S-Tt-gZf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a3l-q1-J6j"/>
+                <constraint firstItem="WJT-8N-0mk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="maC-XK-Q2V"/>
+                <constraint firstItem="Yts-dJ-kp4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="r6w-Oc-Gqs"/>
+                <constraint firstItem="xI2-Z8-08H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r7s-Zs-ETO"/>
+                <constraint firstAttribute="trailing" secondItem="N4S-Tt-gZf" secondAttribute="trailing" id="yYN-kP-d1a"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="358" y="184"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_login_textfield" width="9" height="11"/>
+        <image name="bg_navigationBar_normal" width="124" height="124"/>
+        <image name="btn_navigation_close" width="30" height="30"/>
+        <image name="btn_navigation_close_hl" width="30" height="30"/>
+    </resources>
+</document>
