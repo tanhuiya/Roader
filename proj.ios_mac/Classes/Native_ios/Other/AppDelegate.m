@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-//#import "UMSocialData.h"
+#import "UMSocialData.h"
 #import "MTDealsViewController.h"
 #import "MTNavigationController.h"
 
@@ -24,7 +24,7 @@
     MTDealsViewController* dealVc=[[MTDealsViewController alloc]init];
     self.window.rootViewController=[[MTNavigationController alloc]initWithRootViewController:dealVc];
     [self.window makeKeyAndVisible];
-//    [UMSocialData setAppKey:UMKEY];
+    [UMSocialData setAppKey:UMKEY];
     return YES;
 }
 

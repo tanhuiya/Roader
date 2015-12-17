@@ -30,5 +30,6 @@
 
 }
 - (BOOL) prefersStatusBarHidden;
-
+-(void)rotateToPortrait;
+-(void)rotateToLandScape;
 @end

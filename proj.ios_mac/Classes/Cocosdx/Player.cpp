@@ -60,12 +60,12 @@ Player::Player(Node* render_node,Node* ui_node){
 	m_direction=FORWARD;
 	m_Alive=true;
 	m_blink=false;
-	m_num=Number::create(Vec2(100,550),Vec2(0,1));
+	m_num=Number::create(Vec2(50,500),Vec2(0,1));
 	ui_node->addChild(m_num);
 	isPause=false;
 	m_world=NULL;
 	m_cam=NULL;
-	m_cs=Number::create(Vec2(950,550),Vec2(1,1));
+	m_cs=Number::create(Vec2(900,500),Vec2(1,1));
 	ui_node->addChild(m_cs);
 	m_score=0;
 	m_coin=0;

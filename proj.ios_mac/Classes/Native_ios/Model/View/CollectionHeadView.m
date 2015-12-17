@@ -8,7 +8,7 @@
 
 #import "CollectionHeadView.h"
 #import "CateroryBtn.h"
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
 #import "MetaDataTool.h"
 
 @interface CollectionHeadView ()<UIScrollViewDelegate>
@@ -22,17 +22,18 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if([super initWithFrame:frame]){
         [self addSubview:self.scrollView];
-        [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self);
-        }];
+//        [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(self);
+//        }];
         self.categories=[MetaDataTool shardWithDataTool].categories;
-//        self.scrollView.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
+        self.scrollView.frame=self.bounds;
         [self addButtons];
         [self insertSubview:self.pageControl aboveSubview:self.scrollView];
-        [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self);
-            make.bottom.equalTo(self.scrollView.mas_bottom);
-        }];
+//        [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerX.equalTo(self);
+//            make.bottom.equalTo(self.scrollView.mas_bottom);
+//        }];
+        self.pageControl.center=CGPointMake(self.center.x, self.frame.size.height-10);
     }
     return self;
 }

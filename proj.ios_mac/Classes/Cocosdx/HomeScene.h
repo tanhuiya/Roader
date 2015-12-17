@@ -8,5 +8,6 @@ public:
 	CREATE_FUNC(MainScene);
 	bool init();
 	void menuCallback(cocos2d::Ref* pSender);
+    void menuCallbackIOS(cocos2d::Ref* pSender);
 };
 #endif

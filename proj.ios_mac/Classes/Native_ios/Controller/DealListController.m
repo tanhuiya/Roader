@@ -22,7 +22,8 @@
 @implementation DealListController
 -(instancetype)init{
     UICollectionViewFlowLayout* flowout=[[UICollectionViewFlowLayout alloc]init];
-    CGFloat width=([UIScreen mainScreen].bounds.size.width-3*5)*0.5;
+    CGFloat Screenwidth = [UIDevice currentDevice].orientation==UIDeviceOrientationPortrait ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
+    CGFloat width=(Screenwidth-3*5)*0.5;
     flowout.itemSize=CGSizeMake(width , width+30);
     flowout.minimumInteritemSpacing=5;
     flowout.minimumLineSpacing=5;
@@ -97,7 +98,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DealViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"deal" forIndexPath:indexPath];
     cell.delegate=self;
-    cell.deal=self.deals[indexPath.item];
+//    cell.deal=self.deals[indexPath.item];
     return cell;
 }
 

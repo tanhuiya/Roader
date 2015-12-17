@@ -61,7 +61,7 @@
 // For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
 - (NSUInteger) supportedInterfaceOrientations{
 #ifdef __IPHONE_6_0
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    return UIInterfaceOrientationMaskLandscapeRight;
 #endif
 }
 
@@ -109,6 +109,34 @@
 - (void)dealloc {
     [super dealloc];
 }
-
+-(void)rotateToLandScape{
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+                                       withObject:(id)UIDeviceOrientationLandscapeRight];
+    }
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];  //设置状态栏
+    
+    [self.view setTransform:CGAffineTransformMakeRotation(0)];               //旋转view
+    
+    self.view.bounds = CGRectMake(0, 0, screenRect.size.width, screenRect.size.height);           //设置bounds
+//    CGSize s = screenRect.size;
+//    auto glview = cocos2d::Director::getInstance()->getOpenGLView();
+//    glview->setFrameSize(s.width, s.height);
+//    cocos2d::Application::getInstance()->applicationScreenSizeChanged((int) s.width, (int) s.height);
+//    
+}
+-(void)rotateToPortrait{
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+                                       withObject:(id)UIInterfaceOrientationPortrait];
+    }
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];  //设置状态栏
+    
+    [self.view setTransform:CGAffineTransformMakeRotation(0)];               //旋转view
+    
+    self.view.bounds = CGRectMake(0, 0, screenRect.size.width, screenRect.size.height);           //设置bounds
+}
 
 @end

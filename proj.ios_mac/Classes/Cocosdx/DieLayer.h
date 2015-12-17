@@ -18,7 +18,7 @@ private:
 	MenuItemSprite* backitem;
 	MenuItemSprite* restartitem;
 	Player* m_player;
-	Size visibleSize;
+    cocos2d::Size visibleSize;
 //	World* m_world;
 };
 #endif

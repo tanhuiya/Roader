@@ -46,7 +46,7 @@ static AppDelegate s_sharedApplication;
 
     // Add the view controller's view to the window and display.
     window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
-
+    CGRect screenRect = [UIScreen mainScreen].bounds;
     // Init the CCEAGLView
     CCEAGLView *eaglView = [CCEAGLView viewWithFrame: [window bounds]
                                          pixelFormat: (NSString*)cocos2d::GLViewImpl::_pixelFormat
