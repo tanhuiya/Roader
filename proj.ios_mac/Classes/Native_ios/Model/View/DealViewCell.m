@@ -38,7 +38,8 @@
     _deal = deal;
     
     // 图片
-    [self.imageView setImageWithURL:[NSURL URLWithString:deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
+ [self.imageView sd_setImageWithURL:[NSURL URLWithString:deal.image_url] placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
+
     // 标题
     self.titleLabel.text = deal.title;
     

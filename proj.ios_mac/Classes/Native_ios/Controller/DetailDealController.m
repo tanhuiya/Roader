@@ -95,7 +95,7 @@
     self.timeOut.selected=self.deal.restrictions.is_refundable;
     self.timeOutChange.selected=self.deal.restrictions.is_reservation_required;
     [self.saleNumber setTitle:[NSString stringWithFormat:@"已售%d",self.deal.purchase_count] forState:UIControlStateNormal];
-//    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.deal.image_url]  placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.deal.image_url]  placeholderImage:[UIImage imageNamed:@"placeholder_deal"]];
     NSDateFormatter* fomatter=[[NSDateFormatter alloc]init];
     fomatter.dateFormat=@"yyyy-MM-dd";
     NSDate * endData=[[fomatter dateFromString:self.deal.purchase_deadline]dateByAddingTimeInterval:24*3600];

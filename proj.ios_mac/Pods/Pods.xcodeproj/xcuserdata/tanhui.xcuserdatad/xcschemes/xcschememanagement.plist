@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Masonry.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,30 +14,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SDWebImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>02B0FF937374A32FEA77E63308ACEC24</key>
+		<key>5EFE7C5465787F52CC47A8D8B9AA7181</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>560B7CA5D1512A3165FE0BE922021501</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>96C7CA6712C424E6F4E26644BFA80BCA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A9A83F63385AA43314397B8DD375464B</key>
+		<key>FEBA755D76093F09578037DD60FAC7F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

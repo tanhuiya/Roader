@@ -24,7 +24,7 @@
     UICollectionViewFlowLayout* flowout=[[UICollectionViewFlowLayout alloc]init];
     CGFloat Screenwidth = [UIDevice currentDevice].orientation==UIDeviceOrientationPortrait ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
     CGFloat width=(Screenwidth-3*5)*0.5;
-    flowout.itemSize=CGSizeMake(width , width+30);
+    flowout.itemSize=CGSizeMake(width , width+50);
     flowout.minimumInteritemSpacing=5;
     flowout.minimumLineSpacing=5;
     return [super initWithCollectionViewLayout:flowout];
@@ -98,7 +98,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DealViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"deal" forIndexPath:indexPath];
     cell.delegate=self;
-//    cell.deal=self.deals[indexPath.item];
+    cell.deal=self.deals[indexPath.item];
     return cell;
 }
 
