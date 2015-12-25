@@ -27,7 +27,9 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSnsService.h"
+#import "UMSocialData.h"
 @implementation AppController
 
 #pragma mark -
@@ -38,6 +40,8 @@ static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
+    [self configureThirdSetting:launchOptions];
+    
     cocos2d::Application *app = cocos2d::Application::getInstance();
     app->initGLContextAttrs();
     cocos2d::GLViewImpl::convertAttrs();
@@ -133,6 +137,20 @@ static AppDelegate s_sharedApplication;
 #pragma mark -
 #pragma mark Memory management
 
+-(void)configureThirdSetting:(NSDictionary *)launchOptions{
+//    [UMSocialData openLog:YES];
+    [UMSocialData setAppKey:UMKEY];
+    [UMSocialWechatHandler setWXAppId:@"wx1fc78ae6cf0d7a1e" appSecret:@"2a8d80e4b2f50a3a28a4603c2ded31b9" url:@"http://www.umeng.com/social"];
+}
+#pragma mark 回调方法
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
+}
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.

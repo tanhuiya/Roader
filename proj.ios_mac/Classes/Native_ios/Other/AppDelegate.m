@@ -7,9 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "UMSocialData.h"
+
 #import "MTDealsViewController.h"
 #import "MTNavigationController.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSnsService.h"
+#import "UMSocialData.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +27,16 @@
     MTDealsViewController* dealVc=[[MTDealsViewController alloc]init];
     self.window.rootViewController=[[MTNavigationController alloc]initWithRootViewController:dealVc];
     [self.window makeKeyAndVisible];
-    [UMSocialData setAppKey:UMKEY];
+    
+    [self configureThirdSetting:launchOptions];
+    
     return YES;
 }
-
+-(void)configureThirdSetting:(NSDictionary *)launchOptions{
+    [UMSocialData openLog:YES];
+    [UMSocialData setAppKey:UMKEY];
+    [UMSocialWechatHandler setWXAppId:@"wx1fc78ae6cf0d7a1e" appSecret:@"2a8d80e4b2f50a3a28a4603c2ded31b9" url:@"http://www.umeng.com/social"];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

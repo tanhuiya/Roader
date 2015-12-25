@@ -131,7 +131,7 @@ void Player::hurt(){
 		m_sprite->setScaleX(x);
 		m_sprite->setScaleY(y);
 		m_sprite->setScaleZ(z);*/
-		m_sprite->stopActionByTag(1000);
+//		m_sprite->stopActionByTag(1000);
 		m_sprite->setRotation3D(Vec3(90,180,0));
 		m_Alive = false;
 		auto delay=DelayTime::create(2.0);
