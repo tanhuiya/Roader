@@ -33,7 +33,7 @@
 #import "MBProgressHUD+NJ.h"
 #import "CollectionHeadView.h"
 
-@interface MTDealsViewController()<AwesomeMenuDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MTDealsViewController()<AwesomeMenuDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CateGoryButtonDelegate>
 @property(strong,nonatomic)AwesomeMenu* menu;
 @property(strong,nonatomic)DealsTopMenu *CategoryMenu;
 @property(strong,nonatomic)DealsTopMenu *CityMenu;
@@ -227,10 +227,7 @@
     CollectionHeadView* reuseView=nil;
     if(kind==UICollectionElementKindSectionHeader){
         reuseView=(CollectionHeadView*)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headReuser" forIndexPath:indexPath];
-//        UIView * bottom = [UIView new];
-//        bottom.size = CGSizeMake(self.view.width, 100);
-//        bottom.backgroundColor = [UIColor yellowColor];
-//        [reuseView addSubview:bottom];
+        reuseView.btnDelegate=self;
     }
     return reuseView;
 }
@@ -253,39 +250,38 @@
 
 -(void)setRightBarButton{
     UIBarButtonItem* Serach_item=[UIBarButtonItem itemWithTarget:self action:@selector(SearchClicked) image:@"icon_search" highImage:@"icon_search"];
-    Serach_item.customView.width=50;
-    Serach_item.customView.height=30;
+    Serach_item.customView.width=25;
+    Serach_item.customView.height=25;
     self.navigationItem.rightBarButtonItems=@[Serach_item];
 }
 -(void)setLeftBarButton{
-//    UIBarButtonItem* Icon=[UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_meituan_logo" highImage:@"icon_meituan_logo"];
-//    Icon.enabled=NO;
-    DealsTopMenu* CategoryMenu=[DealsTopMenu menu];
-    [CategoryMenu.imageButton setImage:[UIImage imageNamed:@"icon_category_highlighted_0"] forState:UIControlStateHighlighted];
-    [CategoryMenu.imageButton setImage:[UIImage imageNamed:@"icon_category_0"] forState:UIControlStateNormal];
-    CategoryMenu.Title.text=@"分类";
-    CategoryMenu.SubTitle.text=@"全部";
-    [CategoryMenu addTarget:self selector:@selector(categoryMenuClicked)];
-    UIBarButtonItem* item1=[[UIBarButtonItem alloc]initWithCustomView:CategoryMenu];
-    self.CategoryMenu=CategoryMenu;
+
     DealsTopMenu* CityMenu=[DealsTopMenu menu];
-    [CityMenu.imageButton setImage:[UIImage imageNamed:@"icon_district_highlighted"] forState:UIControlStateHighlighted];
-    [CityMenu.imageButton setImage:[UIImage imageNamed:@"icon_district"] forState:UIControlStateNormal];
-        CityMenu.Title.text=[NSString stringWithFormat:@"%@-全部",self.selectedCity.name];
+//    [CityMenu.imageButton setImage:[UIImage imageNamed:@"icon_district_highlighted"] forState:UIControlStateHighlighted];
+//    [CityMenu.imageButton setImage:[UIImage imageNamed:@"icon_district"] forState:UIControlStateNormal];
+    CityMenu.Title.text=[NSString stringWithFormat:@"%@",self.selectedCity.name];
     CityMenu.SubTitle.text=@"地区";
     [CityMenu addTarget:self selector:@selector(regionMenuClicked)];
     UIBarButtonItem* item2=[[UIBarButtonItem alloc]initWithCustomView:CityMenu];
     self.CityMenu=CityMenu;
-    DealsTopMenu* SortMenu=[DealsTopMenu menu];
-    [SortMenu.imageButton setImage:[UIImage imageNamed:@"icon_sort_highlighted"] forState:UIControlStateHighlighted];
-    [SortMenu.imageButton setImage:[UIImage imageNamed:@"icon_sort"] forState:UIControlStateNormal];
-    SortMenu.Title.text=@"排序";
-    SortMenu.SubTitle.text=self.selectedSort.label;
-    [SortMenu addTarget:self selector:@selector(sortMenuClicked)];
-    UIBarButtonItem* item3=[[UIBarButtonItem alloc]initWithCustomView:SortMenu];
-    self.SortMenu=SortMenu;
-    self.navigationItem.leftBarButtonItems=@[item1,item2,item3];
+//    DealsTopMenu* SortMenu=[DealsTopMenu menu];
+//    [SortMenu.imageButton setImage:[UIImage imageNamed:@"icon_sort_highlighted"] forState:UIControlStateHighlighted];
+//    [SortMenu.imageButton setImage:[UIImage imageNamed:@"icon_sort"] forState:UIControlStateNormal];
+//    SortMenu.Title.text=@"排序";
+//    SortMenu.SubTitle.text=self.selectedSort.label;
+//    [SortMenu addTarget:self selector:@selector(sortMenuClicked)];
+//    UIBarButtonItem* item3=[[UIBarButtonItem alloc]initWithCustomView:SortMenu];
+//    self.SortMenu=SortMenu;
+    self.navigationItem.leftBarButtonItems=@[item2];
 }
+#pragma mark - CategoryDeleagte
+-(void)cateGoryDidselect:(MTCategory *)category{
+    CategoryController* categoryVC=[[CategoryController alloc]init];;
+    categoryVC.selectedCategory=category;
+    categoryVC.selectedSubCategory=self.selectedSubCategory;
+    [self.navigationController pushViewController:categoryVC animated:YES];
+}
+
 #pragma mark - 左边导航栏
 -(void)categoryMenuClicked{
     CategoryController* categoryVC=[[CategoryController alloc]init];;

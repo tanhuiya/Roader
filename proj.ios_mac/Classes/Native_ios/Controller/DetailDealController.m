@@ -19,13 +19,14 @@
 #import "DealLoaclTool.h"
 #import "DealBuyController.h"
 #define  UMKEY @"556fdd2c67e58e959d0046d4"
-@interface DetailDealController ()<UIWebViewDelegate>
+@interface DetailDealController ()<UIWebViewDelegate,UMSocialUIDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *Title;
 @property (weak, nonatomic) IBOutlet UILabel *decs;
 @property (weak, nonatomic) IBOutlet UILabel *currentPrice;
 @property (weak, nonatomic) IBOutlet PriceLabel *OriginalPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *coucang;
+@property (retain, nonatomic) IBOutlet UIView *BottomView;
 
 @property (weak, nonatomic) IBOutlet UIButton *timeOut;
 @property (weak, nonatomic) IBOutlet UIButton *leftTime;
@@ -53,6 +54,8 @@
     if([[[DealLoaclTool shardWithLocalTool]getCollectionDeals] containsObject:self.deal]){
         self.coucang.selected=YES;
     }
+    CGSize size = [self.BottomView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    NSLog(@"%@",NSStringFromCGSize(size));
 }
 #pragma mark Actions
 
@@ -75,9 +78,24 @@
 }
 - (IBAction)share:(UIButton *)sender {
     NSString* str=[NSString stringWithFormat:@"[%@]  %@  %@ ",self.Title.text,self.decs.text,self.deal.deal_h5_url];
-    [UMSocialSnsService presentSnsController:self appKey:UMKEY shareText:str shareImage:self.imageView.image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,nil] delegate:nil];
+//    [UMSocialSnsService presentSnsController:self appKey:UMKEY shareText:str shareImage:self.imageView.image shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,nil] delegate:nil];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:UMKEY
+                                      shareText:str
+                                     shareImage:self.imageView.image
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,nil]
+                                       delegate:self];
 }
-
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
 -(void)dismissVC{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -181,5 +199,6 @@
 //    if(div){bodyHTML+=div.outerHTML;}
 //}
 //document.body.innerHTML=bodyHTML;
+
 
 @end

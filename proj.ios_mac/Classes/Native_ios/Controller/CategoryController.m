@@ -11,22 +11,30 @@
 #import "MetaDataTool.h"
 #import "MTCategory.h"
 #import "notes.h"
+#import "Masonry.h"
 @interface CategoryController ()<DropDownNoteDelegate>
 @property(nonatomic,weak)DropDownMenu* dropMenu;
 @end
 
 @implementation CategoryController
-
+-(instancetype)init{
+    if([super init]){
+        DropDownMenu* dropMenu=[DropDownMenu Dropmenu];
+        self.dropMenu=dropMenu;
+        dropMenu.delegate=self;
+        dropMenu.items=[MetaDataTool shardWithDataTool].categories;
+        [self.view addSubview:self.dropMenu];
+        [self.dropMenu mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    DropDownMenu* dropMenu=[DropDownMenu Dropmenu];
-    self.dropMenu=dropMenu;
-    dropMenu.delegate=self;
-    self.view =dropMenu;
-    self.preferredContentSize=CGSizeMake(400, 400);
-    dropMenu.items=[MetaDataTool shardWithDataTool].categories;
     
+    self.view.backgroundColor=[UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +45,6 @@
     NSArray* cates=[MetaDataTool shardWithDataTool].categories;
     if([cates[mainIndex] subcategories].count==0){
         [[NSNotificationCenter defaultCenter]postNotificationName:CategorySelectedNotification object:nil userInfo:@{CategoryParam:cates[mainIndex]}];
-        [self dismissViewControllerAnimated:YES completion:nil];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -49,7 +56,6 @@
     dict[CategorySubParam]=cate.subcategories[subIndex];
 
     [[NSNotificationCenter defaultCenter]postNotificationName:CategorySelectedNotification object:nil userInfo:dict];
-    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

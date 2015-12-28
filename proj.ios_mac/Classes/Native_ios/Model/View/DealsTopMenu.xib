@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C47a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
@@ -11,42 +10,35 @@
             <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08d-kL-a28" userLabel="分割线">
-                    <rect key="frame" x="0.0" y="3" width="1" height="34"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="1" id="9AH-mg-uIE"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqa-Dg-imw">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG2-O3-chP" userLabel="SubLabel">
-                    <rect key="frame" x="80" y="40" width="0.0" height="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG2-O3-chP" userLabel="SubLabel">
+                    <rect key="frame" x="0.0" y="24" width="23" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C99-yh-KOI">
-                    <rect key="frame" x="80" y="0.0" width="0.0" height="0.0"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C99-yh-KOI">
+                    <rect key="frame" x="0.0" y="0.0" width="26" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="08d-kL-a28" firstAttribute="top" secondItem="pc2-xv-xyX" secondAttribute="top" constant="3" id="3e8-AA-sSf"/>
                 <constraint firstItem="Aqa-Dg-imw" firstAttribute="leading" secondItem="pc2-xv-xyX" secondAttribute="leading" id="6kK-3P-cEi"/>
                 <constraint firstAttribute="bottom" secondItem="rG2-O3-chP" secondAttribute="bottom" id="Eof-9T-r4N"/>
-                <constraint firstAttribute="bottom" secondItem="08d-kL-a28" secondAttribute="bottom" constant="3" id="FPY-1E-a93"/>
+                <constraint firstItem="rG2-O3-chP" firstAttribute="leading" secondItem="pc2-xv-xyX" secondAttribute="leading" id="M3L-Kp-O1W"/>
                 <constraint firstAttribute="trailing" secondItem="C99-yh-KOI" secondAttribute="trailing" id="Qcm-az-9LK"/>
+                <constraint firstItem="C99-yh-KOI" firstAttribute="leading" secondItem="pc2-xv-xyX" secondAttribute="leading" id="Wea-V7-sVb"/>
                 <constraint firstAttribute="trailing" secondItem="Aqa-Dg-imw" secondAttribute="trailing" id="XIa-3h-iKR"/>
-                <constraint firstItem="08d-kL-a28" firstAttribute="leading" secondItem="pc2-xv-xyX" secondAttribute="leading" id="XS9-hK-hIp"/>
                 <constraint firstItem="C99-yh-KOI" firstAttribute="top" secondItem="pc2-xv-xyX" secondAttribute="top" id="ecz-ZQ-HvO"/>
                 <constraint firstAttribute="trailing" secondItem="rG2-O3-chP" secondAttribute="trailing" id="ema-r7-u3y"/>
                 <constraint firstAttribute="bottom" secondItem="Aqa-Dg-imw" secondAttribute="bottom" id="naD-tY-NRw"/>
@@ -54,6 +46,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Qcm-az-9LK"/>
+                    <exclude reference="ema-r7-u3y"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="SubTitle" destination="rG2-O3-chP" id="TM9-V8-itK"/>
                 <outlet property="Title" destination="C99-yh-KOI" id="ZQk-qx-he8"/>

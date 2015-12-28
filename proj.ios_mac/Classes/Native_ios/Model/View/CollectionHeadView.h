@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MTCategory;
+@protocol CateGoryButtonDelegate <NSObject>
+
+-(void)cateGoryDidselect:(MTCategory*)category;
+
+@end
 
 @interface CollectionHeadView : UICollectionReusableView
+@property(nonatomic,assign)id<CateGoryButtonDelegate> btnDelegate;
 @property(nonatomic,strong)NSArray* categories;
 @end

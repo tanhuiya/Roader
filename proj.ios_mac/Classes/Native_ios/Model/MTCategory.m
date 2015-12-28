@@ -21,5 +21,8 @@
 -(NSString *)small_image_highlight{
     return self.small_highlighted_icon;
 }
+-(BOOL)isEqual:(MTCategory*)object{
+    return [self.name isEqualToString:object.name];
+}
 MJCodingImplementation
 @end

@@ -66,7 +66,7 @@
                 }
                 btn.category=self.categories[index++];
                 [self.scrollView addSubview:btn];
-                
+                [btn addTarget:self action:@selector(btnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
             }
         }else{
             for (int j=0; j<self.categories.count-(page-1)*8; j++) {
@@ -78,11 +78,16 @@
                 }
                 btn.category=self.categories[index++];
                 [self.scrollView addSubview:btn];
+                [btn addTarget:self action:@selector(btnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
             }
         }
     }
 }
-
+-(void)btnDidClicked:(CateroryBtn*)btn{
+    if([self.btnDelegate respondsToSelector:@selector(cateGoryDidselect:)]){
+        [self.btnDelegate cateGoryDidselect:btn.category];
+    }
+}
 #pragma mark getter and setter
 -(UIPageControl *)pageControl{
     if(!_pageControl){
