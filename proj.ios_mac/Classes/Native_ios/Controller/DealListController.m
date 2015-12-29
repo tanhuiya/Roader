@@ -22,11 +22,13 @@
 @implementation DealListController
 -(instancetype)init{
     UICollectionViewFlowLayout* flowout=[[UICollectionViewFlowLayout alloc]init];
-    CGFloat Screenwidth = [UIDevice currentDevice].orientation==UIDeviceOrientationPortrait ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
+//    CGFloat Screenwidth = [UIDevice currentDevice].orientation==UIDeviceOrientationPortrait ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
+    CGFloat Screenwidth =[UIScreen mainScreen].bounds.size.width<[UIScreen mainScreen].bounds.size.height ? [UIScreen mainScreen].bounds.size.width : [UIScreen mainScreen].bounds.size.height;
     CGFloat width=(Screenwidth-3*5)*0.5;
-    flowout.itemSize=CGSizeMake(width , width+50);
+    flowout.itemSize=CGSizeMake(width , width+55);
     flowout.minimumInteritemSpacing=5;
     flowout.minimumLineSpacing=5;
+    flowout.sectionInset=UIEdgeInsetsMake(0, 5, 0, 5);
     return [super initWithCollectionViewLayout:flowout];
 }
 

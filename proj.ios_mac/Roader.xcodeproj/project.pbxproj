@@ -52,6 +52,7 @@
 		B01E61FB1C2D364E007937B7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01E61FA1C2D364E007937B7 /* CoreTelephony.framework */; };
 		B01E61FD1C2D3665007937B7 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B01E61FC1C2D3665007937B7 /* libstdc++.tbd */; };
 		B068B6CF1C22657000B0A3F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B068B6CE1C22657000B0A3F6 /* Assets.xcassets */; };
+		B06FB58C1C3250B000E7F792 /* aboutus_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B06FB58B1C3250B000E7F792 /* aboutus_icon@2x.png */; };
 		B0B88D1D1C20FFA5006FA35F /* 20coin.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B88CBE1C20FFA5006FA35F /* 20coin.png */; };
 		B0B88D1E1C20FFA5006FA35F /* 40coin.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B88CBF1C20FFA5006FA35F /* 40coin.png */; };
 		B0B88D1F1C20FFA5006FA35F /* 80coin.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B88CC01C20FFA5006FA35F /* 80coin.png */; };
@@ -371,6 +372,7 @@
 		B01E61FA1C2D364E007937B7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		B01E61FC1C2D3665007937B7 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libstdc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B068B6CE1C22657000B0A3F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B06FB58B1C3250B000E7F792 /* aboutus_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "aboutus_icon@2x.png"; path = "Number/aboutus_icon@2x.png"; sourceTree = "<group>"; };
 		B0B88CBE1C20FFA5006FA35F /* 20coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20coin.png; sourceTree = "<group>"; };
 		B0B88CBF1C20FFA5006FA35F /* 40coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 40coin.png; sourceTree = "<group>"; };
 		B0B88CC01C20FFA5006FA35F /* 80coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80coin.png; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 				B0B88CFA1C20FFA5006FA35F /* no.png */,
 				B0B88CFB1C20FFA5006FA35F /* Number */,
 				B0B88D061C20FFA5006FA35F /* option_button.png */,
+				B06FB58B1C3250B000E7F792 /* aboutus_icon@2x.png */,
 				B0B88D071C20FFA5006FA35F /* pause1.png */,
 				B0B88D081C20FFA5006FA35F /* retry-1.png */,
 				B0B88D091C20FFA5006FA35F /* start1.png */,
@@ -1664,6 +1667,7 @@
 				B0B88D571C20FFA5006FA35F /* no.png in Resources */,
 				B0B88D431C20FFA5006FA35F /* LJT.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				B06FB58C1C3250B000E7F792 /* aboutus_icon@2x.png in Resources */,
 				B0B88D341C20FFA5006FA35F /* Cow.c3b in Resources */,
 				B0B88D371C20FFA5006FA35F /* Girl_Face.png in Resources */,
 				F5F09D4B1C266F3D00375395 /* categories.plist in Resources */,

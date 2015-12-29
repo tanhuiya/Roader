@@ -33,7 +33,7 @@
 #import "MBProgressHUD+NJ.h"
 #import "CollectionHeadView.h"
 
-@interface MTDealsViewController()<AwesomeMenuDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CateGoryButtonDelegate>
+@interface MTDealsViewController()<AwesomeMenuDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CateGoryButtonDelegate,UITextFieldDelegate>
 @property(strong,nonatomic)AwesomeMenu* menu;
 @property(strong,nonatomic)DealsTopMenu *CategoryMenu;
 @property(strong,nonatomic)DealsTopMenu *CityMenu;
@@ -91,7 +91,7 @@
     self.CityMenu.Title.text=[note.userInfo[CityParam] name];
     self.selectedCity=note.userInfo[CityParam];
     self.selectedRegion=[self.selectedCity.regions firstObject];
-    self.CityMenu.Title.text=[NSString stringWithFormat:@"%@-全部",self.selectedCity.name];
+    self.CityMenu.Title.text=[NSString stringWithFormat:@"%@",self.selectedCity.name];
     self.CityMenu.SubTitle.text=nil;
     [self loadNewDeals];
     [self.collectionView.header beginRefreshing];
@@ -249,10 +249,21 @@
 
 
 -(void)setRightBarButton{
-    UIBarButtonItem* Serach_item=[UIBarButtonItem itemWithTarget:self action:@selector(SearchClicked) image:@"icon_search" highImage:@"icon_search"];
-    Serach_item.customView.width=25;
-    Serach_item.customView.height=25;
-    self.navigationItem.rightBarButtonItems=@[Serach_item];
+//    UIBarButtonItem* Serach_item=[UIBarButtonItem itemWithTarget:self action:@selector(SearchClicked) image:@"icon_search" highImage:@"icon_search"];
+//    Serach_item.customView.width=30;
+//    Serach_item.customView.height=25;
+    DealsTopMenu* CategoryMenu=[DealsTopMenu menu];
+    if(self.selectedCategory.name){
+        CategoryMenu.Title.text=[NSString stringWithFormat:@"%@",self.selectedCategory.name];
+    }else{
+        CategoryMenu.Title.text=@"分类";
+    }
+    
+    CategoryMenu.SubTitle.text=@"";
+    [CategoryMenu addTarget:self selector:@selector(categoryMenuClicked)];
+    UIBarButtonItem* item=[[UIBarButtonItem alloc]initWithCustomView:CategoryMenu];
+    self.CategoryMenu=CategoryMenu;
+    self.navigationItem.rightBarButtonItems=@[item];
 }
 -(void)setLeftBarButton{
 
@@ -308,6 +319,11 @@
 -(NSString *)imageName{
     return @"icon_deals_empty";
 }
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self SearchClicked];
+    return YES;
+}
 #pragma mark - 右边导航栏
 
 -(void)SearchClicked{
@@ -316,37 +332,56 @@
     MTNavigationController* nvc=[[MTNavigationController alloc]initWithRootViewController:svc];
     [self presentViewController:nvc animated:YES completion:nil];
 }
+-(void)setNavTitle{
+    UITextField* searchBar = [[UITextField alloc]init];
+    UIImageView* image = [[UIImageView alloc]init];
+    image.image=[UIImage imageNamed:@"icon_search"];
+    image.contentMode=UIViewContentModeScaleAspectFit;
+    image.size=CGSizeMake(30, 20);
+    searchBar.leftView=image;
+    searchBar.leftViewMode=UITextFieldViewModeAlways;
+    searchBar.delegate=self;
+    searchBar.placeholder=@"输入商户名称";
+    searchBar.size=CGSizeMake(150, 30);
+    searchBar.layer.cornerRadius=15;
+    searchBar.clipsToBounds=YES;
+    searchBar.backgroundColor=[UIColor orangeColor];
+    self.navigationItem.titleView=searchBar;
+
+}
 -(void)setNavBar{
     [self setRightBarButton];
     [self setLeftBarButton];
+    [self setNavTitle];
 }
 -(void)setupPath{
-    AwesomeMenuItem* item1=[self itemWithContentImage:@"icon_pathMenu_mine_highlighted" andHighlight:@"icon_pathMenu_mine_highlighted"];
-    AwesomeMenuItem* item2=[self itemWithContentImage:@"icon_pathMenu_collect_highlighted" andHighlight:@"icon_pathMenu_collect_highlighted"];
-    AwesomeMenuItem* item3=[self itemWithContentImage:@"icon_pathMenu_scan_highlighted"
-                                         andHighlight:@"icon_pathMenu_scan_highlighted"];
-    AwesomeMenuItem* item4=[self itemWithContentImage:@"icon_pathMenu_more_highlighted"
-                                         andHighlight:@"icon_pathMenu_more_highlighted"];
+    AwesomeMenuItem* item1=[self itemWithContentImage:@"wm_tab_mytakeaway_press" andHighlight:@"wm_tab_mytakeaway_press"];
+    AwesomeMenuItem* item2=[self itemWithContentImage:@"pic_icon_like_pressed" andHighlight:@"pic_icon_like_pressed"];
+    AwesomeMenuItem* item3=[self itemWithContentImage:@"wm_review_full_star"
+                                         andHighlight:@"wm_review_full_star"];
+    AwesomeMenuItem* item4=[self itemWithContentImage:@"common_indicator_icon_fail"
+                                         andHighlight:@"common_indicator_icon_fail"];
     
     NSArray* items=@[item1,item2,item3,item4];
-    AwesomeMenuItem* startItem=[self itemWithContentImage:@"icon_pathMenu_mainMine_highlighted" andHighlight:@"icon_pathMenu_mainMine_highlighted"];
+    AwesomeMenuItem* startItem=[self itemWithContentImage:@"wm_tab_mytakeaway_press" andHighlight:@"wm_tab_mytakeaway_press"];
     AwesomeMenu* menu=[[AwesomeMenu alloc]initWithFrame:CGRectZero startItem:startItem menuItems:items];
     menu.menuWholeAngle=M_PI_2;
+    menu.rotateAngle = -M_PI_2;
     menu.rotateAddButton=NO;
     menu.delegate=self;
     self.menu=menu;
     [self.view addSubview:menu];
     [menu autoSetDimensionsToSize:CGSizeMake(200, 200)];
     [menu autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
-    [menu autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
+    [menu autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
     UIImage* image=[UIImage imageNamed:@"icon_pathMenu_background"];
     UIImageView* iv=[[UIImageView alloc]initWithImage:image];
     [menu insertSubview:iv atIndex:0];
     [iv autoSetDimensionsToSize:iv.image.size];
     [iv autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
-    [iv autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
+    [iv autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
     
-    menu.startPoint=CGPointMake(iv.image.size.width*0.5,200-iv.image.size.height*0.5);
+    menu.startPoint=CGPointMake(200-iv.image.size.width*0.5,200-iv.image.size.height*0.5);
 }
 -(void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx{
     [self awesomeMenuDidFinishAnimationClose:menu];
@@ -365,11 +400,11 @@
     }
 }
 -(void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu{
-    self.menu.startButton.contentImageView.image=[UIImage imageNamed:@"icon_pathMenu_mainMine_highlighted"];
+    self.menu.startButton.contentImageView.image=[UIImage imageNamed:@"wm_tab_mytakeaway_press"];
 }
 
 -(void)awesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu{
-    self.menu.startButton.contentImageView.image=[UIImage imageNamed:@"icon_pathMenu_cross_highlighted"];
+    self.menu.startButton.contentImageView.image=[UIImage imageNamed:@"common_indicator_icon_fail"];
 }
 
 @end

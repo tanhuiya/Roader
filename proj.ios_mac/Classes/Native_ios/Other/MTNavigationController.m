@@ -12,8 +12,10 @@
 
 +(void)initialize{
     UINavigationBar* bar=[UINavigationBar appearance];
-    [bar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
-    
+//    [bar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
+    [bar setBarTintColor:[UIColor orangeColor]];
+    bar.translucent=YES;
+
     UIBarButtonItem* barItem=[UIBarButtonItem appearance];
     
     NSMutableDictionary* dict=[NSMutableDictionary dictionary];

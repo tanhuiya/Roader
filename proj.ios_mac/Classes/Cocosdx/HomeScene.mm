@@ -7,18 +7,24 @@
 Scene* MainScene::createScene(){
 	auto scene=Scene::create();
 	auto layer=MainScene::create();
+    auto ccLayer = LayerColor::create(Color4B::WHITE);
+    ccLayer->setVisible(true);
+    scene->addChild(ccLayer);
+    
 	scene->addChild(layer);
+    
 	return scene;
 }
 bool MainScene::init(){
 	Layer::init();
-	auto menuitemS=MenuItemImage::create("start1.png","start1.png",CC_CALLBACK_1(MainScene::menuCallback,this));
+	auto menuitemS=MenuItemImage::create("Icon-100.png","Icon-100.png",CC_CALLBACK_1(MainScene::menuCallback,this));
 	auto size=Director::getInstance()->getWinSize();
-	//menuitemS->setPosition(Vec2(size.width/2,size.height/2));
-    auto menuItemIos = MenuItemImage::create("option_button.png","option_button.png",CC_CALLBACK_1(MainScene::menuCallbackIOS,this));
-    menuItemIos->setPosition(menuitemS->getPositionX() ,menuitemS->getPositionY()+120);
+	menuitemS->setPosition(Vec2(size.width/2-60,size.height/2));
+    auto menuItemIos = MenuItemImage::create("aboutus_icon@2x.png","aboutus_icon@2x.png",CC_CALLBACK_1(MainScene::menuCallbackIOS,this));
+    menuItemIos->setPosition(size.width/2+60 ,menuitemS->getPositionY());
 	auto menu=Menu::create(menuitemS,menuItemIos,NULL);
-	
+    menu->setPosition(0, 0);
+//    this->setAnchorPoint(Vec2(0, 0));
 	this->addChild(menu);
     
     RootViewController* root=(RootViewController*)[UIApplication sharedApplication].keyWindow.rootViewController;
